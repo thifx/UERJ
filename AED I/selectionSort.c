@@ -1,29 +1,28 @@
 #include "readarray.h"
 #include "printarray.h"
 
-void print_array(int *, int);
-
 int main()
 {
     int array_size;
     int *user_array = read_array(&array_size);
     int i = 0;
+    int tmp;
 
     while (i < array_size - 1)
     {
         int j = i + 1;
-        int min_value = user_array[i];
+        int min_value = i;
         while (j < array_size)
         {
-            if (user_array[i] > user_array[j])
+            if (user_array[min_value] > user_array[j])
             {
-                min_value = user_array[j];
-                user_array[j] = user_array[i];
-                break;
+                min_value = j;
             }
             j++;
         }
-        user_array[i] = min_value;
+        tmp = user_array[i];
+        user_array[i] = user_array[min_value];
+        user_array[min_value] = tmp;
         i++;
     }
     print_array(user_array, array_size);
