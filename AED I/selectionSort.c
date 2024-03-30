@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "readarray.h"
+#include "printarray.h"
 
-int *read_array(int *);
 void print_array(int *, int);
 
 int main()
@@ -12,9 +11,9 @@ int main()
 
     while (i < array_size - 1)
     {
-        int j = array_size - 1;
+        int j = i + 1;
         int min_value = user_array[i];
-        while (j > i)
+        while (j < array_size)
         {
             if (user_array[i] > user_array[j])
             {
@@ -22,7 +21,7 @@ int main()
                 user_array[j] = user_array[i];
                 break;
             }
-            j--;
+            j++;
         }
         user_array[i] = min_value;
         i++;
@@ -30,35 +29,4 @@ int main()
     print_array(user_array, array_size);
     free(user_array);
     return 0;
-}
-
-void print_array(int *array, int array_size)
-{
-    int i = 0;
-    while (i < array_size)
-    {
-        printf("item[%d]: %d\n", i, array[i]);
-        i++;
-    }
-}
-int *read_array(int *array_size)
-{
-    puts("Enter array size:");
-    scanf("%d", array_size);
-
-    int *user_array = (int *)malloc(sizeof(int) * *array_size);
-
-    if (user_array == NULL)
-    {
-        puts("Could not allocate");
-        exit(1);
-    }
-    short j = 0;
-    while (j < *array_size)
-    {
-        printf("Enter number at index %d:\n", j);
-        scanf("%d", user_array + j);
-        j++;
-    }
-    return user_array;
 }
