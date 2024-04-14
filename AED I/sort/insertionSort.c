@@ -1,5 +1,5 @@
-#include "printarray.h"
-#include "readarray.h"
+#include "../util/printarray.h"
+#include "../util/readarray.h"
 
 int main()
 {
