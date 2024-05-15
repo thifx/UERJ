@@ -52,10 +52,9 @@ void push(linkedList_t *list, int value)
 void printList(linkedList_t *list)
 {
     node_t *curr = list->head;
-    while (curr->next != NULL)
+    while (curr != NULL)
     {
         printf("%d\n", curr->value);
         curr = curr->next;
     }
-    printf("%d\n", curr->value);
 }
